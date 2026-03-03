@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 const Auth = () => {
   const [mode, setMode] = useState("signup");
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const { signUp, login } = useAuth();
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -38,6 +39,7 @@ const Auth = () => {
             {mode === "signup" ? "Sign Up" : "Login"}
           </h1>
           <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
+            {error && <div className="error-message">{error}</div>}
             <div className="form-group">
               <label className="form-label" htmlFor="email">
                 Email
